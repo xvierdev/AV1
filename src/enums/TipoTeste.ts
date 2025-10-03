@@ -3,3 +3,5 @@ enum TipoTeste {
     hidraulico = 'HIDRAULICO',
     aerodinamico = 'AERODINAMICO'
 }
+
+export default TipoTeste;

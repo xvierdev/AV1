@@ -3,3 +3,5 @@ enum StatusEtapa {
     Andamento = "ANDAMENTO",
     Concluida = "CONCLUIDA"
 }
+
+export default StatusEtapa;

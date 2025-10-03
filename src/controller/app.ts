@@ -1,0 +1,1 @@
+console.log("Find a job and get to work!");

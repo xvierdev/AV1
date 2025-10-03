@@ -1,7 +1,7 @@
 import TipoAeronave from "../enums/TipoAeronave";
 
-class Aviao {
-    private codigo: number;
+class Aeronave {
+    private codigo: number
     private modelo: TipoAeronave;
     private tipo: string;
     private capacidade: number;
@@ -15,14 +15,17 @@ class Aviao {
     }
     public detalhes() {
         return `Código: ${this.codigo}\n` +
-        `Modelo: ${this.modelo}\n` +
-        `Tipo: ${this.tipo}\n` +
-        `Capacidade: ${this.capacidade}\n` +
-        `Alcance: ${this.alcance}`
+            `Modelo: ${this.modelo}\n` +
+            `Tipo: ${this.tipo}\n` +
+            `Capacidade: ${this.capacidade}\n` +
+            `Alcance: ${this.alcance}`
+    }
+    public salvar() {
+        // Lógica para salvar a aeronave no arquivo de texto
+    }
+    public carregar() {
+        // Lógica para carregar a aeronave do arquivo de texto
     }
 }
 
-
-// Teste de funcionamento
-let aviao = new Aviao(1, TipoAeronave.Comercial, 'teco-teco', 2, 4000);
-console.log(aviao.detalhes());
+export default Aeronave;

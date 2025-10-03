@@ -1,7 +1,7 @@
-enum Status {
+enum StatusPeca {
     Producao = "EM_PRODUCAO",
     Transporte = "EM_TRANSPORTE",
     Pronta = "PRONTA"
 }
 
-export default Status;
+export default StatusPeca;
