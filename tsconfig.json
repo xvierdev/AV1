@@ -4,11 +4,13 @@
     "outDir": "dist",
     "module": "commonjs",
     "target": "es2020",
-    "types": [],
+    "types": [
+      "node"
+    ],
     "strict": true,
     "isolatedModules": true, // Manter se estiver usando um transpilador como Babel/ts-node
     "moduleDetection": "force", // Manter
-    "esModuleInterop": true, 
+    "esModuleInterop": true,
     "jsx": "react-jsx",
     "skipLibCheck": true
   }

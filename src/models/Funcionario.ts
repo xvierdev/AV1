@@ -1,8 +1,8 @@
-import Telefone from "./Telefone";
-import Endereco from "./Endereco";
-import NivelPermissao from "../enums/NivelPermissao";
+import { Telefone } from "./Telefone";
+import { Endereco } from "./Endereco";
+import { NivelPermissao } from "../enums/NivelPermissao";
 
-class Funcionario {
+export class Funcionario {
     id: number;
     nome: string;
     telefone: Telefone;
@@ -32,5 +32,3 @@ class Funcionario {
         return null;
     }
 }
-
-export default Funcionario;

@@ -1,6 +1,6 @@
-import Aeronave from "./Aeronave";
+import { Aeronave } from "./Aeronave";
 
-class Relatorio {
+export class Relatorio {
     public gerarRelatorio(aeronave: Aeronave): void {
         // Lógica para gerar o relatório
     }
@@ -8,5 +8,3 @@ class Relatorio {
         // Lógica para salvar o relatório em um arquivo de texto
     }
 }
-
-export default Relatorio;

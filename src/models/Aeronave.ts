@@ -1,18 +1,17 @@
-import TipoAeronave from "../enums/TipoAeronave";
+import { TipoAeronave } from "../enums/TipoAeronave";
+import { Peca } from "./Peca";
+import { Etapa } from "./Etapa";
 
-class Aeronave {
-    private codigo: number
-    private modelo: TipoAeronave;
-    private tipo: string;
-    private capacidade: number;
-    private alcance: number;
-    constructor(codigo: number, modelo: TipoAeronave, tipo: string, capacidade: number, alcance: number) {
-        this.codigo = codigo;
-        this.modelo = modelo;
-        this.tipo = tipo;
-        this.capacidade = capacidade;
-        this.alcance = alcance;
-    }
+export class Aeronave {
+    constructor(
+        public codigo: number,
+        public modelo: TipoAeronave,
+        public tipo: string,
+        public capacidade: number,
+        public alcance: number,
+        public pecas: Peca[] = [],
+        public etapas: Etapa[] = [],
+    ) { }
     public detalhes() {
         return `Código: ${this.codigo}\n` +
             `Modelo: ${this.modelo}\n` +
@@ -20,12 +19,4 @@ class Aeronave {
             `Capacidade: ${this.capacidade}\n` +
             `Alcance: ${this.alcance}`
     }
-    public salvar() {
-        // Lógica para salvar a aeronave no arquivo de texto
-    }
-    public carregar() {
-        // Lógica para carregar a aeronave do arquivo de texto
-    }
 }
-
-export default Aeronave;

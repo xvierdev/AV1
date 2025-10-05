@@ -1,7 +1,7 @@
-import Funcionario from "./Funcionario";
-import StatusEtapa from "../enums/StatusEtapa";
+import { Funcionario } from "./Funcionario";
+import { StatusEtapa } from "../enums/StatusEtapa";
 
-class Etapa {
+export class Etapa {
     nome: string;
     prazo: string
     status: StatusEtapa;
@@ -26,5 +26,3 @@ class Etapa {
         return this.funcionarios.map(funcionario => funcionario.nome).join(", ");
     }
 }
-
-export default Etapa;

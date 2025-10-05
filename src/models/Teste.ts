@@ -1,7 +1,7 @@
-import ResultadoTeste from "../enums/ResultadoTeste";
-import TipoTeste from "../enums/TipoTeste";
+import { ResultadoTeste } from "../enums/ResultadoTeste";
+import { TipoTeste } from "../enums/TipoTeste";
 
-class Teste {
+export class Teste {
     tipo: TipoTeste;
     resultado: ResultadoTeste;
     constructor(tipo: TipoTeste, resultado: ResultadoTeste) {
@@ -15,5 +15,3 @@ class Teste {
         // Lógica para carregar o teste do arquivo de texto
     }
 }
-
-export default Teste;

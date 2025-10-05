@@ -1,6 +1,4 @@
-enum Tipo {
+export enum Tipo {
     Nacional = "NACIONAL",
     Importado = "IMPORTADO"
 }
-
-export default Tipo;

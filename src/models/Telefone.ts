@@ -1,4 +1,4 @@
-class Telefone {
+export class Telefone {
     ddd: number;
     numero: string;
     constructor(ddd: number, numero: string) {
@@ -6,5 +6,3 @@ class Telefone {
         this.numero = numero;
     }
 }
-
-export default Telefone;
