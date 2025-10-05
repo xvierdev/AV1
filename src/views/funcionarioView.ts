@@ -5,6 +5,7 @@ import { Telefone } from '../models/Telefone';
 import { NivelPermissao } from '../enums/NivelPermissao';
 import { AppState } from '../App';
 
+// Controla o menu de gerenciamento de funcionários.
 export function menuFuncionario(state: AppState): void {
     let escolha: string;
 
@@ -37,6 +38,7 @@ export function menuFuncionario(state: AppState): void {
     } while (true);
 }
 
+// Exibe as opções do menu de funcionários.
 function exibirMenuFuncionario(funcionarios: Funcionario[]): void {
     console.log('\n--- Gerenciamento de Funcionarios ---');
     console.log(`Funcionarios cadastrados: ${funcionarios.length}`);
@@ -49,6 +51,7 @@ function exibirMenuFuncionario(funcionarios: Funcionario[]): void {
     console.log('-------------------------------------');
 }
 
+// Mostra a lista de todos os funcionários cadastrados.
 export function listarFuncionarios(funcionarios: Funcionario[]): void {
     if (funcionarios.length === 0) {
         console.log('\nNenhum funcionario cadastrado.');
@@ -60,6 +63,7 @@ export function listarFuncionarios(funcionarios: Funcionario[]): void {
     });
 }
 
+// Coleta dados para adicionar um novo funcionário.
 function adicionarFuncionario(state: AppState): void {
     console.log('\n--- Adicionar Novo Funcionario ---');
 
@@ -105,6 +109,7 @@ function adicionarFuncionario(state: AppState): void {
     console.log(`\nFuncionario ${nome} adicionado com sucesso! (ID: ${novoFuncionario.id})`);
 }
 
+// Exibe os detalhes completos de um funcionário específico.
 function selecionarFuncionario(funcionarios: Funcionario[]): Funcionario | undefined {
     const idStr = readlineSync.question('Digite o ID do funcionario para selecionar: ').trim();
     const id = parseInt(idStr, 10);
@@ -131,6 +136,7 @@ function selecionarFuncionario(funcionarios: Funcionario[]): Funcionario | undef
     return undefined;
 }
 
+// Remove um funcionário da lista.
 function removerFuncionario(state: AppState): void {
     listarFuncionarios(state.funcionarios);
     if (state.funcionarios.length === 0) return;
@@ -148,6 +154,7 @@ function removerFuncionario(state: AppState): void {
     }
 }
 
+// Altera o nível de permissão de um funcionário.
 function mudarPermissao(funcionarios: Funcionario[]): void {
     const funcionario = selecionarFuncionario(funcionarios);
     if (!funcionario) return;

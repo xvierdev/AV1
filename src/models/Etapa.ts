@@ -2,26 +2,29 @@ import { Funcionario } from "./Funcionario";
 import { StatusEtapa } from "../enums/StatusEtapa";
 
 export class Etapa {
-    nome: string;
-    prazo: string
-    status: StatusEtapa;
-    funcionarios: Array<Funcionario>;
+    constructor(
+        public nome: string,
+        public prazo: string,
+        public status: StatusEtapa,
+        public funcionarios: Array<Funcionario>,
+    ) { }
 
-    constructor(nome: string, prazo: string, status: StatusEtapa, funcionarios: Array<Funcionario>) {
-        this.nome = nome;
-        this.prazo = prazo;
-        this.status = status;
-        this.funcionarios = funcionarios;
-    }
+    // Altera o status da etapa para "ANDAMENTO".
     public inicializar() {
         this.status = StatusEtapa.Andamento;
     }
+
+    // Altera o status da etapa para "CONCLUIDA".
     public finalizar() {
         this.status = StatusEtapa.Concluida;
     }
+
+    // Adiciona um funcionário ao array de funcionários da etapa.
     public associarFuncionario(funcionario: Funcionario) {
         this.funcionarios.push(funcionario);
     }
+
+    // Retorna uma string com os nomes dos funcionários associados.
     public listarFuncionarios() {
         return this.funcionarios.map(funcionario => funcionario.nome).join(", ");
     }

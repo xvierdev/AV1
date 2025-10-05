@@ -4,6 +4,7 @@ import { StatusEtapa } from '../enums/StatusEtapa';
 import { AppState } from '../App';
 import { listarFuncionarios } from './funcionarioView';
 
+// Controla o menu de gerenciamento de etapas.
 export function menuEtapas(state: AppState): void {
     if (!state.aeronaveAtual) return;
 
@@ -24,6 +25,7 @@ export function menuEtapas(state: AppState): void {
     } while (true);
 }
 
+// Exibe as opções do menu de etapas.
 function exibirMenuEtapas(state: AppState): void {
     console.log(`\n--- Gerenciamento de Etapas da Aeronave ${state.aeronaveAtual?.codigo} ---`);
     console.log(`Total de etapas: ${state.aeronaveAtual?.etapas.length}`);
@@ -35,6 +37,7 @@ function exibirMenuEtapas(state: AppState): void {
     console.log('6. Voltar ao Menu Anterior');
 }
 
+// Mostra a lista de etapas da aeronave atual.
 function listarEtapas(state: AppState): void {
     if (!state.aeronaveAtual || state.aeronaveAtual.etapas.length === 0) {
         console.log('\nNenhuma etapa cadastrada.');
@@ -46,6 +49,7 @@ function listarEtapas(state: AppState): void {
     });
 }
 
+// Coleta dados para adicionar uma nova etapa.
 function adicionarEtapa(state: AppState): void {
     if (!state.aeronaveAtual) return;
 
@@ -56,6 +60,7 @@ function adicionarEtapa(state: AppState): void {
     console.log(`\nEtapa "${nome}" adicionada com sucesso!`);
 }
 
+// Altera o status de uma etapa (Pendente -> Andamento -> Concluida).
 function mudarStatusEtapa(state: AppState): void {
     listarEtapas(state);
     if (!state.aeronaveAtual || state.aeronaveAtual.etapas.length === 0) return;
@@ -76,12 +81,14 @@ function mudarStatusEtapa(state: AppState): void {
     }
 
     if (etapa.status === StatusEtapa.Andamento) {
-        if (readlineSync.keyInYN('Deseja finalizar esta etapa?')) {
+        const confirm = readlineSync.question('Deseja finalizar esta etapa? (s/n): ').trim().toLowerCase();
+        if (confirm === 's') {
             etapa.finalizar();
             console.log(`\nEtapa "${etapa.nome}" finalizada.`);
         }
     } else if (etapa.status === StatusEtapa.Pendente) {
-        if (readlineSync.keyInYN('Deseja iniciar esta etapa?')) {
+        const confirm = readlineSync.question('Deseja iniciar esta etapa? (s/n): ').trim().toLowerCase();
+        if (confirm === 's') {
             const emAndamento = state.aeronaveAtual.etapas.some(e => e.status === StatusEtapa.Andamento);
             if (emAndamento) {
                 console.log("\nErro: Ja existe outra etapa em andamento.");
@@ -97,6 +104,7 @@ function mudarStatusEtapa(state: AppState): void {
     }
 }
 
+// Associa um funcionário existente a uma etapa.
 function associarFuncionarioAEtapa(state: AppState): void {
     if (state.funcionarios.length === 0) {
         console.log("\nPrimeiro cadastre um funcionario no menu principal.");
@@ -131,6 +139,7 @@ function associarFuncionarioAEtapa(state: AppState): void {
     console.log(`\nFuncionario ${funcionario.nome} associado a etapa "${etapa.nome}".`);
 }
 
+// Mostra a lista de funcionários de uma etapa específica.
 function listarFuncionariosDeEtapa(state: AppState): void {
     listarEtapas(state);
     if (!state.aeronaveAtual || state.aeronaveAtual.etapas.length === 0) return;

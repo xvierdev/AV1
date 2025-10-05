@@ -2,16 +2,14 @@ import { StatusPeca } from "../enums/StatusPeca";
 import { Tipo } from "../enums/TipoPeca";
 
 export class Peca {
-    nome: string;
-    tipo: Tipo;
-    fornecedor: string;
-    status: StatusPeca;
-    constructor(nome: string, tipo: Tipo, fornecedor: string, status: StatusPeca) {
-        this.nome = nome;
-        this.tipo = tipo;
-        this.fornecedor = fornecedor;
-        this.status = status;
-    }
+    constructor(
+        public nome: string,
+        public tipo: Tipo,
+        public fornecedor: string,
+        public status: StatusPeca,
+    ) { }
+
+    // Altera o status atual da peça.
     public AtualizarStatus(novoStatus: StatusPeca) {
         this.status = novoStatus;
     }

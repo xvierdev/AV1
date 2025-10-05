@@ -4,6 +4,7 @@ import { Tipo } from '../enums/TipoPeca';
 import { StatusPeca } from '../enums/StatusPeca';
 import { AppState } from '../App';
 
+// Controla o menu de gerenciamento de peças.
 export function menuPecas(state: AppState): void {
     if (!state.aeronaveAtual) return;
 
@@ -23,6 +24,7 @@ export function menuPecas(state: AppState): void {
     } while (true);
 }
 
+// Exibe as opções do menu de peças.
 function exibirMenuPecas(state: AppState): void {
     console.log(`\n--- Gerenciamento de Pecas da Aeronave ${state.aeronaveAtual?.codigo} ---`);
     console.log(`Total de pecas: ${state.aeronaveAtual?.pecas.length}`);
@@ -33,6 +35,7 @@ function exibirMenuPecas(state: AppState): void {
     console.log('5. Voltar ao Menu Anterior');
 }
 
+// Mostra a lista de peças da aeronave atual.
 function listarPecas(state: AppState): void {
     if (!state.aeronaveAtual || state.aeronaveAtual.pecas.length === 0) {
         console.log('\nNenhuma peca cadastrada para esta aeronave.');
@@ -44,6 +47,7 @@ function listarPecas(state: AppState): void {
     });
 }
 
+// Coleta dados para adicionar uma nova peça.
 function adicionarPeca(state: AppState): void {
     if (!state.aeronaveAtual) return;
 
@@ -61,6 +65,7 @@ function adicionarPeca(state: AppState): void {
     console.log(`\nPeca "${nome}" adicionada com sucesso!`);
 }
 
+// Remove uma peça da lista.
 function removerPeca(state: AppState): void {
     listarPecas(state);
     if (!state.aeronaveAtual || state.aeronaveAtual.pecas.length === 0) return;
@@ -75,6 +80,7 @@ function removerPeca(state: AppState): void {
     console.log(`\nPeca "${pecaRemovida[0].nome}" removida com sucesso.`);
 }
 
+// Altera o status de uma peça específica.
 function atualizarStatusPeca(state: AppState): void {
     listarPecas(state);
     if (!state.aeronaveAtual || state.aeronaveAtual.pecas.length === 0) return;

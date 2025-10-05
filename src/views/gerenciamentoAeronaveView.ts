@@ -2,8 +2,10 @@ import * as readlineSync from 'readline-sync';
 import { AppState } from '../App';
 import { menuPecas } from './pecaView';
 import { menuEtapas } from './etapaView';
-import { gerarRelatorioTela } from './relatorioView';
+import { menuRelatorio } from './relatorioView';
+import { menuTestes } from './testeView';
 
+// Controla o menu de gerenciamento da aeronave atual.
 export function menuGerenciamentoAeronave(state: AppState): void {
     let escolha: string;
 
@@ -19,22 +21,24 @@ export function menuGerenciamentoAeronave(state: AppState): void {
                 menuEtapas(state);
                 break;
             case '3':
-                gerarRelatorioTela(state);
+                menuTestes(state);
                 break;
             case '4':
-                console.log('\nVoltando ao Menu Principal...');
-                return;
-            default:
-                console.log(`\nOpcao invalida: "${escolha}". Por favor, digite de 1 a 4.`);
+                menuRelatorio(state);
+                break;
+            case '5': console.log('\nVoltando ao Menu Principal...'); return;
+            default: console.log(`\nOpcao invalida: "${escolha}". Por favor, digite de 1 a 5.`);
         }
     } while (true);
 }
 
+// Exibe as opções do menu de gerenciamento da aeronave.
 function exibirMenuGerenciamento(state: AppState): void {
     console.log(`\n--- Gerenciamento da Aeronave ${state.aeronaveAtual?.codigo} (${state.aeronaveAtual?.tipo}) ---`);
     console.log('1. Gerenciar Pecas');
     console.log('2. Gerenciar Etapas');
-    console.log('3. Gerar Relatorio');
-    console.log('4. Voltar ao Menu Principal');
+    console.log('3. Gerenciar Testes');
+    console.log('4. Gerar Relatorio');
+    console.log('5. Voltar ao Menu Principal');
     console.log('--------------------------------------------------');
 }
