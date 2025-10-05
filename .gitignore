@@ -1,3 +1,5 @@
 dist/
 data/
 node_modules/
+database.json
+relatorio.txt
